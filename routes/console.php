@@ -19,6 +19,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command("app:init", function () {
-    $this->call("migrate");
+    $this->call("migrate:refresh");
     $this->call("db:seed");
 });
