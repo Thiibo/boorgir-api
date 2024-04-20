@@ -21,4 +21,4 @@ Artisan::command('inspire', function () {
 Artisan::command("app:init", function () {
     $this->call("migrate:refresh");
     $this->call("db:seed");
-});
+})->purpose('Initialising the app');
