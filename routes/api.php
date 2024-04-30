@@ -15,6 +15,34 @@ use App\Http\Controllers\JwtAuthController;
 |
 */
 
+Route::get('/translations', function(){
+    $lang = request('lang', 'en');
+    App::setlocale($lang);
+
+    $translations = [
+        "en" => [
+            "hello" => "Hello",
+            "goodbye" => "Goodbye",
+            "welcome" => "Welcome!",
+            "farewell" => "Farewell!"
+        ],
+        "nl" => [
+            "hello" => "Hallo",
+            "goodbye" => "Tot ziens",
+            "welcome" => "Welkom!",
+            "farewell" => "Vaarwel!"
+        ],
+        "fr" => [
+            "goodbye" => "Au revoir",
+            "welcome" => "Bienvenue!",
+            "farewell" => "Adieu!"
+        ]
+    ];
+
+    return $translations[$lang];
+});
+
+
 Route::post('register', [JwtAuthController::class, 'register']);
 Route::post('login', [JwtAuthController::class, 'login']);
 
