@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JwtAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', [JwtAuthController::class, 'register']);
+Route::post('login', [JwtAuthController::class, 'login']);
+
+Route::group([
+    'middleware' => ["auth.csrf.jwt", "auth:api"]
+], function() {
+    Route::post('profile', [JwtAuthController::class, 'profile']);
+    Route::post('refresh', [JwtAuthController::class, 'refreshToken']);
+    Route::post('logout', [JwtAuthController::class, 'logout']);
 });
