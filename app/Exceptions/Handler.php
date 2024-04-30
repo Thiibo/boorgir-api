@@ -2,7 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Modules\Helpers\ErrorCreator;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\MessageBag;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Http\Response;
+
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,5 +32,15 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (NotFoundHttpException $e, Request $request) {
+            if ($request->is('api/*')) {
+                $errorCreator = new ErrorCreator();
+                $errors = new MessageBag(["Page not found."]);
+                
+                return $errorCreator->createErrorResponse($errors, Response::HTTP_NOT_FOUND);
+            }
+        });
+
     }
 }
