@@ -47,7 +47,7 @@ Route::middleware('language')->group(function () {
     Route::group([
         'middleware' => ["auth.csrf.jwt", "auth:api"]
     ], function() {
-        Route::post('profile', [JwtAuthController::class, 'profile']);
+        Route::get('profile', [JwtAuthController::class, 'profile']);
         Route::post('refresh', [JwtAuthController::class, 'refreshToken']);
         Route::post('logout', [JwtAuthController::class, 'logout']);
     });
