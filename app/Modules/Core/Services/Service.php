@@ -49,6 +49,13 @@ abstract class Service {
         }        
     }
 
+    public function update($data, int $id, $ruleSet = "update")
+    {
+        $this->validate($data, $ruleSet);
+        if ($this->hasErrors()) return;
+        return $this->model->where('id', $id)->update($data);
+    }
+
     public function getErrors(){
         return $this->errors;
     }
