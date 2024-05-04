@@ -3,109 +3,67 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Nette\Utils\Random;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Http\Response;
+use App\Modules\Users\Services\UserService;
+use App\Modules\Helpers\ErrorCreator;
+use Illuminate\Http\JsonResponse;
 
-// TO REFACTOR
-
-class JwtAuthController extends Controller
+class JwtAuthController
 {
+    protected UserService $service;
+
+    public function __construct(UserService $service)
+    {
+        $this->service = $service;
+    }
+
     // User Register (POST, formdata)
     public function register(Request $request){
-        
-        // data validation
-        $request->validate([
-            "name" => "required",
-            "email" => "required|email|unique:users",
-            "password" => "required|confirmed"
-        ]);
+        $model = $this->service->create($request->all());
+        if ($this->service->hasErrors()) {
+            return $this->createErrorResponse();
+        }
 
-        // User Model
-        User::create([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => Hash::make($request->password)
-        ]);
-
-        // Response
-        return response()->json([
-            "status" => true,
-            "message" => "User registered successfully"
-        ]);
+        return response()->json($model, Response::HTTP_CREATED);
     }
 
     // User Login (POST, formdata)
     public function login(Request $request){
-        
-        // data validation
-        $request->validate([
-            "email" => "required|email",
-            "password" => "required"
-        ]);
-
-        $csrfLength = env("CSRF_TOKEN_LENGTH");
-        $csrfToken = Random::generate($csrfLength);
-
-        // JWTAuth (add CSRF token into payload of JWT)
-        $token = JWTAuth::claims(['X-XSRF-TOKEN' => $csrfToken])->attempt([
-            "email" => $request->email,
-            "password" => $request->password
-        ]);
-
-        if(empty($token)){
-            return response()->json([
-                "status" => false,
-                "message" => "Invalid details"
-            ]);
+        $authCookies = $this->service->login($request->all());
+        if ($this->service->hasErrors()) {
+            return $this->createErrorResponse();
         }
 
-        $ttl = env("JWT_COOKIE_TTL");
-        $tokenCookie = cookie("token", $token, $ttl);
-        $csrfCookie = cookie("X-XSRF-TOKEN", $csrfToken, $ttl);
-
         return response(["message" => "User logged in successfully"])
-            ->withCookie($tokenCookie)
-            ->withCookie($csrfCookie);
+            ->withCookie($authCookies["token"])
+            ->withCookie($authCookies["csrf"]);
     }
 
     // User Profile (GET)
     public function profile(){
-
         $userdata = auth()->user();
-
-        return response()->json([
-            "status" => true,
-            "message" => "Profile data",
-            "data" => $userdata
-        ]);
+        return response()->json($userdata);
     } 
 
     // To generate refresh token value
     public function refreshToken(){
-        $csrfLength = env("CSRF_TOKEN_LENGTH");
-        $csrfToken = Random::generate($csrfLength);
-
-        $token = JWTAuth::claims(['X-XSRF-TOKEN' => $csrfToken])->refresh();
-
-        $ttl = env("JWT_COOKIE_TTL");
-        $tokenCookie = cookie("token", $token, $ttl);
-        $csrfCookie = cookie("X-XSRF-TOKEN", $csrfToken, $ttl);
+        $authCookies = $this->service->refreshToken();
 
         return response(["message" => "Token refreshed successfully"])
-            ->withCookie($tokenCookie)
-            ->withCookie($csrfCookie);
+            ->withCookie($authCookies["token"])
+            ->withCookie($authCookies["csrf"]);
     }
 
     // User Logout (GET)
     public function logout(){
-        
         auth()->logout();
+        return response()->json(["message" => "User logged out successfully"]);
+    }
 
-        return response()->json([
-            "status" => true,
-            "message" => "User logged out successfully"
-        ]);
+    private function createErrorResponse(): JsonResponse
+    {
+        $errors = $this->service->getErrors();
+        $errorCreator = new ErrorCreator();
+        return $errorCreator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
     }
 }
