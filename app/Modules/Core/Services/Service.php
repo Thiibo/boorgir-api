@@ -30,27 +30,22 @@ abstract class Service {
     }
 
 
-    public function create($data, $ruleKey = "add")
+    public function create($data, $ruleSet = "add")
     {
-        $this->validate($data, $ruleKey);
-        if($this->hasErrors()){
-            return;
-        }
-
+        $this->validate($data, $ruleSet);
+        if ($this->hasErrors()) return;
         $quote = $this->model->create($data);
         return $quote;
     }
 
-    
-
-    public function validate($data, $ruleKey)
+    public function validate($data, $ruleSet)
     {
-        $rules = isset($this->rules[$ruleKey]) ? $this->rules[$ruleKey] : $this->rules;
+        $rules = isset($this->rules[$ruleSet]) ? $this->rules[$ruleSet] : $this->rules;
 
         $this->errors = new MessageBag();
         $validator = Validator::make($data, $rules);
         if($validator->fails()){
-            $this->errors = $validator->errors();            
+            $this->errors = $validator->errors();
         }        
     }
 
