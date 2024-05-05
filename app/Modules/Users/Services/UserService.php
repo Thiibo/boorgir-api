@@ -1,9 +1,9 @@
 <?php
 namespace App\Modules\Users\Services;
 
-use App\Modules\Core\Services\Service;
 use Nette\Utils\Random;
 use App\Models\User;
+use App\Modules\Core\Services\Service;
 use Illuminate\Support\MessageBag;
 use Tymon\JWTAuth\Facades\JWTAuth;
 

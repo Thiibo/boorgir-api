@@ -10,7 +10,14 @@ class IngredientBackService extends Service {
     protected $searchField = 'name';
 
     protected $rules = [
-        'name'
+        "add" => [
+            'price' => 'required|numeric',
+            'vegetarian' => 'required|boolean',
+        ],
+        "update" => [
+            'price' => 'required|numeric',
+            'vegetarian' => 'required|boolean',
+        ]
     ];
 
     protected function getRelationFields(){

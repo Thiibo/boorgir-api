@@ -9,10 +9,6 @@ class IngredientFrontService extends TranslatedFrontService {
     protected $fields= ['ingredients.id', 'name', 'description', 'vegetarian', 'price'];
     protected $searchField = 'name';
 
-    protected $rules = [
-        'name'
-    ];
-
     public function __construct(Ingredient $model)
     {
         parent::__construct($model);
