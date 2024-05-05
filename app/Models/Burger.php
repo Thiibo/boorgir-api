@@ -13,6 +13,6 @@ class Burger extends Model
 
     public function translations()
     {
-        return $this->hasMany(BurgerLanguage::class);
+        return $this->hasMany(BurgerLanguage::class, 'item_id');
     }
 }

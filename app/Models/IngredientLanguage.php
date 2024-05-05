@@ -11,7 +11,7 @@ class IngredientLanguage extends Model
 
     protected $hidden = [
         'id',
-        'ingredient_id',
+        'item_id',
         'created_at',
         'updated_at',
     ];

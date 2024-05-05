@@ -13,6 +13,6 @@ class Ingredient extends Model
 
     public function translations()
     {
-        return $this->hasMany(IngredientLanguage::class);
+        return $this->hasMany(IngredientLanguage::class, 'item_id');
     }
 }

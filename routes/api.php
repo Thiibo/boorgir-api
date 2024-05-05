@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IngredientBackController;
 use App\Http\Controllers\IngredientFrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JwtAuthController;
@@ -54,5 +55,11 @@ Route::middleware('language')->group(function () {
 
         Route::get('ingredients/{id}', [IngredientFrontController::class, 'find']);
 
+        Route::group([
+            'middleware' => ["auth.admin"],
+            'prefix' => '/admin'
+        ], function() {
+            Route::get('ingredients/{id}', [IngredientBackController::class, 'find']);
+        });
     });
 });
