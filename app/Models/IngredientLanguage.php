@@ -9,6 +9,8 @@ class IngredientLanguage extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'lang'];
+
     protected $hidden = [
         'id',
         'item_id',

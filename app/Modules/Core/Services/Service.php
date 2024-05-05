@@ -10,6 +10,7 @@ abstract class Service {
     protected $searchField;
     protected $errors;
     protected $rules;
+    protected $translatable;
 
     public function __construct($model)
     {
@@ -31,8 +32,10 @@ abstract class Service {
     {
         $this->validate($data, $ruleSet);
         if ($this->hasErrors()) return;
-        $quote = $this->model->create($data);
-        return $quote;
+        $model = $this->model->create($data);
+        if ($this->translatable) $model->translations()->createMany($data['translations']);
+
+        return $model;
     }
 
     public function validate($data, $ruleSet)
