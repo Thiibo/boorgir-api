@@ -12,17 +12,20 @@ class UserService extends Service {
     protected $fields= ['id', 'name'];
     protected $searchField = 'name';
 
-    protected $rules = [
-        "add" => [
-            "name" => "required",
-            "email" => "required|email|unique:users",
-            "password" => "required|confirmed"
-        ],
-        "auth" => [
-            "email" => "required|email",
-            "password" => "required"
-        ]
-    ];
+    protected function getRules()
+    {
+        return [
+            "add" => [
+                "name" => "required",
+                "email" => "required|email|unique:users",
+                "password" => "required|confirmed"
+            ],
+            "auth" => [
+                "email" => "required|email",
+                "password" => "required"
+            ]
+        ];
+    }
 
     public function login($data, $ruleSet = "auth")
     {

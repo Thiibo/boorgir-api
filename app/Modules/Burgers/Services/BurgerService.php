@@ -9,10 +9,6 @@ class BurgerService extends Service {
     protected $fields= ['id', 'name'];
     protected $searchField = 'name';
 
-    protected $rules = [
-        'name'
-    ];
-
     public function __construct(Burger $model)
     {
         parent::__construct($model);

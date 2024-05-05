@@ -15,7 +15,7 @@ class Localization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $allowedLocales = explode(',', env('SUPPORTED_LOCALES'));
+        $allowedLocales = config('app.supported_locales');
         $localeRequested = $request->input('lang', 'en');
         $locale = in_array($localeRequested, $allowedLocales) ? $localeRequested : 'en';
 

@@ -9,7 +9,6 @@ abstract class Service {
     protected $fields;
     protected $searchField;
     protected $errors;
-    protected $rules;
     protected $translatable;
 
     public function __construct($model)
@@ -18,7 +17,13 @@ abstract class Service {
         $this->errors = new MessageBag();
     }
 
-    protected function getRelationFields(){
+    protected function getRules()
+    {
+        return [];
+    }
+
+    protected function getRelationFields()
+    {
         return [];
     }
 
@@ -40,7 +45,7 @@ abstract class Service {
 
     public function validate($data, $ruleSet)
     {
-        $rules = isset($this->rules[$ruleSet]) ? $this->rules[$ruleSet] : $this->rules;
+        $rules = $this->getRules()[$ruleSet];
 
         $this->errors = new MessageBag();
         $validator = Validator::make($data, $rules);
