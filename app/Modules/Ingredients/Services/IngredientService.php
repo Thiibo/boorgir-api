@@ -1,12 +1,12 @@
 <?php
 namespace App\Modules\Ingredients\Services;
 
-use App\Modules\Core\Services\Service;
 use App\Models\Ingredient;
+use App\Modules\Core\Services\TranslatedFrontService;
 
-class IngredientService extends Service {
+class IngredientService extends TranslatedFrontService {
 
-    protected $fields= ['id', 'name'];
+    protected $fields= ['ingredients.id', 'name', 'description', 'vegetarian', 'price'];
     protected $searchField = 'name';
 
     protected $rules = [

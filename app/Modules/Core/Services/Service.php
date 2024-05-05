@@ -23,10 +23,7 @@ abstract class Service {
 
     public function find($id)
     {
-        return $this->model
-            ->select($this->fields)
-            ->with($this->getRelationFields())
-            ->find($id);
+        return $this->getFullModel()->find($id);
     }
 
 
@@ -54,6 +51,13 @@ abstract class Service {
         $this->validate($data, $ruleSet);
         if ($this->hasErrors()) return;
         return $this->model->where('id', $id)->update($data);
+    }
+    
+    public function getFullModel()
+    {
+        return $this->model
+            ->select($this->fields)
+            ->with($this->getRelationFields());
     }
 
     public function getErrors(){
