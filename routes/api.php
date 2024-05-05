@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IngredientFrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JwtAuthController;
 
@@ -50,5 +51,8 @@ Route::middleware('language')->group(function () {
         Route::get('profile', [JwtAuthController::class, 'profile']);
         Route::post('refresh', [JwtAuthController::class, 'refreshToken']);
         Route::post('logout', [JwtAuthController::class, 'logout']);
+
+        Route::get('ingredients/{id}', [IngredientFrontController::class, 'find']);
+
     });
 });
