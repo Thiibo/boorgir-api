@@ -15,8 +15,12 @@ class Localization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->input('lang', 'en');
+        $allowedLocales = explode(',', env('SUPPORTED_LOCALES'));
+        $localeRequested = $request->input('lang', 'en');
+        $locale = in_array($localeRequested, $allowedLocales) ? $localeRequested : 'en';
+
         app()->setlocale($locale);
+
         return $next($request);
     }
 }
