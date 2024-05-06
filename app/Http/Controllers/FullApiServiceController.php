@@ -30,9 +30,10 @@ abstract class FullApiServiceController extends ApiServiceController
         return response()->json($model);
     }
 
-    public function delete($id)
+    public function delete(int $id)
     {
-        throw new \Exception('Not implemented');
+        $model = $this->service->delete($id);
+        return response()->json($model);
     }
 
     private function createErrorResponse(): JsonResponse

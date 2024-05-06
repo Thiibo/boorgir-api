@@ -66,6 +66,11 @@ abstract class Service {
         return $model;
     }
 
+    public function delete(int $id)
+    {
+        return $this->model->find($id)->delete();
+    }
+
     public function validate($data, $ruleSet)
     {
         $rules = $this->getRules()[$ruleSet];
