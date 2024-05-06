@@ -68,7 +68,13 @@ abstract class Service {
 
     public function delete(int $id)
     {
-        return $this->model->find($id)->delete();
+        $model = $this->model->find($id);
+        if ($model === null) {
+            $this->errors = new MessageBag([trans('validation.exists', ['attribute' => 'id'])]);
+            return;
+        }
+
+        return $model->delete();
     }
 
     public function validate($data, $ruleSet)

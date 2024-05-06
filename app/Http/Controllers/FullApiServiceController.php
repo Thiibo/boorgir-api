@@ -33,6 +33,10 @@ abstract class FullApiServiceController extends ApiServiceController
     public function delete(int $id)
     {
         $model = $this->service->delete($id);
+        if ($this->service->hasErrors()) {
+            return $this->createErrorResponse();
+        }
+
         return response()->json($model);
     }
 
