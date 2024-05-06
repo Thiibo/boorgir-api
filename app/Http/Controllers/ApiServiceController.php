@@ -24,7 +24,10 @@ abstract class ApiServiceController extends Controller
 
     public function all(Request $request)
     {
-       throw new \Exception('Not implemented');
+        $perPage = $request->input('per_page', 10);
+        $results = $this->service->all($perPage);
+        
+        return response()->json($results);
     }
 
     protected function createErrorResponse(): JsonResponse

@@ -53,6 +53,7 @@ Route::middleware('language')->group(function () {
         Route::post('refresh', [JwtAuthController::class, 'refreshToken']);
         Route::post('logout', [JwtAuthController::class, 'logout']);
 
+        Route::get('ingredients', [IngredientFrontController::class, 'all']);
         Route::get('ingredients/{id}', [IngredientFrontController::class, 'find']);
 
         Route::group([

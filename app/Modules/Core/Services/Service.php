@@ -38,6 +38,10 @@ abstract class Service {
         return $model;
     }
 
+    public function all(int $perPage)
+    {
+        return $this->getFullModel()->paginate($perPage)->withQueryString();
+    }
 
     public function create($data, $ruleSet = "add")
     {
