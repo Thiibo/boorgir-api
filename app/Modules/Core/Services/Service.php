@@ -29,7 +29,13 @@ abstract class Service {
 
     public function find($id)
     {
-        return $this->getFullModel()->find($id);
+        $model = $this->getFullModel()->find($id);
+        if ($model === null) {
+            $this->errors = new MessageBag([trans('validation.exists', ['attribute' => 'id'])]);
+            return;
+        }
+
+        return $model;
     }
 
 
@@ -46,13 +52,8 @@ abstract class Service {
     public function update($data, int $id, $ruleSet = "update")
     {
         $this->validate($data, $ruleSet);
+        $model = $this->find($id);
         if ($this->hasErrors()) return;
-
-        $model = $this->model->find($id);
-        if ($model === null) {
-            $this->errors = new MessageBag([trans('validation.exists', ['attribute' => 'id'])]);
-            return;
-        }
 
         $model = $model->first();
         $model->update($data);
@@ -75,11 +76,8 @@ abstract class Service {
 
     public function delete(int $id)
     {
-        $model = $this->model->find($id);
-        if ($model === null) {
-            $this->errors = new MessageBag([trans('validation.exists', ['attribute' => 'id'])]);
-            return;
-        }
+        $model = $this->find($id);
+        if ($this->hasErrors()) return;
 
         return $model->delete();
     }

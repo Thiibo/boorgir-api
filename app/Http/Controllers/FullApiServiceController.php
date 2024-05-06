@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Modules\Helpers\ErrorCreator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -38,12 +37,5 @@ abstract class FullApiServiceController extends ApiServiceController
         }
 
         return response()->noContent();
-    }
-
-    private function createErrorResponse(): JsonResponse
-    {
-        $errors = $this->service->getErrors();
-        $errorCreator = new ErrorCreator();
-        return $errorCreator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
     }
 }
