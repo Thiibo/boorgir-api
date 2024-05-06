@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('burger_languages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('burger_id')->constrained();
+            $table->foreignId('burger_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('description');
             $table->timestamps();
