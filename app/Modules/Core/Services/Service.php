@@ -47,7 +47,14 @@ abstract class Service {
     {
         $this->validate($data, $ruleSet);
         if ($this->hasErrors()) return;
-        $model = $this->model->find($id)->first();
+
+        $model = $this->model->find($id);
+        if ($model === null) {
+            $this->errors = new MessageBag([trans('validation.exists', ['attribute' => 'id'])]);
+            return;
+        }
+
+        $model = $model->first();
         $model->update($data);
         if ($this->translatable) {
             foreach ($data["translations"] as $translation) {
