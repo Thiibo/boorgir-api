@@ -60,6 +60,7 @@ Route::middleware('language')->group(function () {
             'middleware' => ["auth.admin"],
             'prefix' => '/admin'
         ], function() {
+            Route::get('ingredients', [IngredientBackController::class, 'all']);
             Route::get('ingredients/{id}', [IngredientBackController::class, 'find']);
             Route::put('ingredients/{id}', [IngredientBackController::class, 'update']);
             Route::delete('ingredients/{id}', [IngredientBackController::class, 'delete']);
