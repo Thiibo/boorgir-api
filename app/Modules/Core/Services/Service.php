@@ -54,7 +54,12 @@ abstract class Service {
                 $entry = $model->translations()
                     ->where('item_id', '=', $model->getKey())
                     ->where('lang', '=', $translation["lang"]);
-                $entry->updateOrCreate($translation);
+                
+                if ($entry->exists()) {
+                    $entry->update($translation);
+                } else {
+                    $model->translations()->create($translation);
+                }
             }
         };
 
