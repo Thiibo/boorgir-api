@@ -43,6 +43,24 @@ abstract class Service {
         return $model;
     }
 
+    public function update($data, int $id, $ruleSet = "update")
+    {
+        $this->validate($data, $ruleSet);
+        if ($this->hasErrors()) return;
+        $model = $this->model->where('id', $id)->first();
+        $model->update($data);
+        if ($this->translatable) {
+            foreach ($data["translations"] as $translation) {
+                $entry = $model->translations()
+                    ->where('item_id', '=', $model->getKey())
+                    ->where('lang', '=', $translation["lang"]);
+                $entry->updateOrCreate($translation);
+            }
+        };
+
+        return $model;
+    }
+
     public function validate($data, $ruleSet)
     {
         $rules = $this->getRules()[$ruleSet];
@@ -54,13 +72,6 @@ abstract class Service {
         }        
     }
 
-    public function update($data, int $id, $ruleSet = "update")
-    {
-        $this->validate($data, $ruleSet);
-        if ($this->hasErrors()) return;
-        return $this->model->where('id', $id)->update($data);
-    }
-    
     public function getFullModel()
     {
         return $this->model

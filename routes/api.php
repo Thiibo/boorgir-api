@@ -60,6 +60,7 @@ Route::middleware('language')->group(function () {
             'prefix' => '/admin'
         ], function() {
             Route::get('ingredients/{id}', [IngredientBackController::class, 'find']);
+            Route::put('ingredients/{id}', [IngredientBackController::class, 'update']);
             Route::post('ingredients', [IngredientBackController::class, 'create']);
         });
     });

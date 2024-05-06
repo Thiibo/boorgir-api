@@ -23,6 +23,11 @@ abstract class FullApiServiceController extends ApiServiceController
     public function update(Request $request, int $id)
     {
         $model = $this->service->update($request->all(), $id);
+        if ($this->service->hasErrors()) {
+            return $this->createErrorResponse();
+        }
+
+        return response()->json($model);
     }
 
     public function delete($id)
