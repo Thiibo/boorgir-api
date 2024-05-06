@@ -47,7 +47,7 @@ abstract class Service {
     {
         $this->validate($data, $ruleSet);
         if ($this->hasErrors()) return;
-        $model = $this->model->where('id', $id)->first();
+        $model = $this->model->find($id)->first();
         $model->update($data);
         if ($this->translatable) {
             foreach ($data["translations"] as $translation) {
