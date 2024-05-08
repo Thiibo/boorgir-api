@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Modules\Helpers\ErrorCreator;
+use App\Modules\Helpers\ResponseGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\MessageBag;
@@ -35,10 +35,10 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (NotFoundHttpException $e, Request $request) {
             if ($request->is('api/*')) {
-                $errorCreator = new ErrorCreator();
-                $errors = new MessageBag(["Page not found."]);
+                $responseGenerator = new ResponseGenerator();
+                $errors = new MessageBag(["general" => "Page not found."]);
                 
-                return $errorCreator->createErrorResponse($errors, Response::HTTP_NOT_FOUND);
+                return $responseGenerator->createErrorResponse($errors, Response::HTTP_NOT_FOUND);
             }
         });
 
