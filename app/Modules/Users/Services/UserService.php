@@ -42,7 +42,7 @@ class UserService extends Service {
         ]);
 
         if(empty($token)){
-            $this->errors = new MessageBag(["Invalid details"]);
+            $this->errors = new MessageBag(["general" => "Invalid details"]);
             return;
         }
 
