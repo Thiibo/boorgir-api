@@ -10,6 +10,9 @@ class Ingredient extends Model
     use HasFactory;
 
     protected $fillable = ['price', 'vegetarian'];
+    protected $casts = [
+        'vegetarian' => 'boolean'
+    ];
 
     public function translations()
     {
