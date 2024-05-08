@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Modules\Helpers\ResponseGenerator;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 use Symfony\Component\HttpFoundation\Response;
 
 class VerifyJwtCsrfToken
@@ -18,7 +20,9 @@ class VerifyJwtCsrfToken
         if (
             $request->cookie('X-XSRF-TOKEN') !== auth()->payload()->get('X-XSRF-TOKEN')
         ) {
-            return response()->json(['Invalid request'], 400);
+            $responseGenerator = new ResponseGenerator();
+            $errors = new MessageBag(["general" => "Invalid request"]);
+            return $responseGenerator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
         }
 
         return $next($request);

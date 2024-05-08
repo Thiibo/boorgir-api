@@ -31,7 +31,7 @@ abstract class Service {
     {
         $model = $this->getFullModel()->find($id);
         if ($model === null) {
-            $this->errors = new MessageBag([trans('validation.exists', ['attribute' => 'id'])]);
+            $this->errors = new MessageBag(["id" => trans('validation.exists', ['attribute' => 'id'])]);
             return;
         }
 
