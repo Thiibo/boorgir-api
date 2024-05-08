@@ -8,6 +8,7 @@ class IngredientBackController extends FullApiServiceController
 {
     public function __construct(IngredientBackService $service)
     {
+        parent::__construct();
         $this->service = $service;
     }
 }
