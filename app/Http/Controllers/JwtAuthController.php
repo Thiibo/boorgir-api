@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Modules\Users\Services\UserService;
-use App\Modules\Helpers\ErrorCreator;
 use Illuminate\Http\JsonResponse;
 
-class JwtAuthController
+class JwtAuthController extends Controller
 {
     protected UserService $service;
 
     public function __construct(UserService $service)
     {
+        parent::__construct();
         $this->service = $service;
     }
 
@@ -34,7 +34,7 @@ class JwtAuthController
             return $this->createErrorResponse();
         }
 
-        return response(["message" => "User logged in successfully"])
+        return $this->responseGenerator->createSuccessResponse("User logged in successfully")
             ->withCookie($authCookies["token"])
             ->withCookie($authCookies["csrf"]);
     }
@@ -49,7 +49,7 @@ class JwtAuthController
     public function refreshToken(){
         $authCookies = $this->service->refreshToken();
 
-        return response(["message" => "Token refreshed successfully"])
+        return $this->responseGenerator->createSuccessResponse("Token refreshed successfully")
             ->withCookie($authCookies["token"])
             ->withCookie($authCookies["csrf"]);
     }
@@ -57,13 +57,12 @@ class JwtAuthController
     // User Logout (GET)
     public function logout(){
         auth()->logout();
-        return response()->json(["message" => "User logged out successfully"]);
+        return $this->responseGenerator->createSuccessResponse("User logged out successfully");
     }
 
     private function createErrorResponse(): JsonResponse
     {
         $errors = $this->service->getErrors();
-        $errorCreator = new ErrorCreator();
-        return $errorCreator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
+        return $this->responseGenerator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
     }
 }

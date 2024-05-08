@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modules\Core\Services\Service;
-use App\Modules\Helpers\ErrorCreator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
@@ -33,8 +32,7 @@ abstract class ApiServiceController extends Controller
     protected function createErrorResponse(): JsonResponse
     {
         $errors = $this->service->getErrors();
-        $errorCreator = new ErrorCreator();
-        return $errorCreator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
+        return $this->responseGenerator->createErrorResponse($errors, Response::HTTP_BAD_REQUEST);
     }
 }
 
