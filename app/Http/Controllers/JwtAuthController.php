@@ -34,7 +34,7 @@ class JwtAuthController extends Controller
             return $this->createErrorResponse();
         }
 
-        return $this->responseGenerator->createSuccessResponse("User logged in successfully")
+        return $this->profile()
             ->withCookie($authCookies["token"])
             ->withCookie($authCookies["csrf"]);
     }
