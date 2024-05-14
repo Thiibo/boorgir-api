@@ -2,13 +2,12 @@
 namespace App\Modules\Ingredients\Services;
 
 use App\Models\Ingredient;
-use App\Modules\Core\Services\Service;
+use App\Modules\Core\Services\TranslatableBackService;
 
-class IngredientBackService extends Service {
+class IngredientBackService extends TranslatableBackService {
 
     protected $fields= ['id', 'vegetarian', 'price'];
     protected $searchField = 'name';
-    protected $translatable = true;
 
     protected function getRules() {
         $supported_locales = implode(',', config('app.supported_locales'));
@@ -29,10 +28,6 @@ class IngredientBackService extends Service {
                 'translations.*.description' => 'required|string',
             ]
         ];
-    }
-
-    protected function getRelationFields(){
-        return ['translations'];
     }
 
     public function __construct(Ingredient $model)

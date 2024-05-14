@@ -2,8 +2,7 @@
 namespace App\Modules\Core\Services;
 
 abstract class TranslatedFrontService extends Service {
-    
-    public function getFullModel()
+    public function getFullModel(string $query = '')
     {
         $language = app()->getLocale();
         $modelTable = $this->model->getTable();
@@ -12,6 +11,7 @@ abstract class TranslatedFrontService extends Service {
         return parent::getFullModel()
             ->join($modelLanguagesTable, "$modelLanguagesTable.item_id", '=', "$modelTable.id")
             ->where("$modelLanguagesTable.lang", '=', $language)
+            ->where($this->searchField, "LIKE", "%$query%")
             ->select($this->fields);
     }
 }

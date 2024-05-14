@@ -24,7 +24,8 @@ abstract class ApiServiceController extends Controller
     public function all(Request $request)
     {
         $perPage = $request->input('per_page', 10);
-        $results = $this->service->all($perPage);
+        $query = $request->input('query', '');
+        $results = $this->service->all($perPage, $query);
         
         return response()->json($results);
     }

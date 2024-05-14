@@ -9,7 +9,6 @@ abstract class Service {
     protected $fields;
     protected $searchField;
     protected $errors;
-    protected $translatable;
 
     public function __construct($model)
     {
@@ -38,19 +37,16 @@ abstract class Service {
         return $model;
     }
 
-    public function all(int $perPage)
+    public function all(int $perPage, string $query = '')
     {
-        return $this->getFullModel()->paginate($perPage)->withQueryString();
+        return $this->getFullModel($query)->paginate($perPage)->withQueryString();
     }
 
     public function create($data, $ruleSet = "add")
     {
         $this->validate($data, $ruleSet);
         if ($this->hasErrors()) return;
-        $model = $this->model->create($data);
-        if ($this->translatable) $model->translations()->createMany($data['translations']);
-
-        return $model;
+        return $this->model->create($data);
     }
 
     public function update($data, int $id, $ruleSet = "update")
@@ -61,19 +57,6 @@ abstract class Service {
 
         $model = $model->first();
         $model->update($data);
-        if ($this->translatable) {
-            foreach ($data["translations"] as $translation) {
-                $entry = $model->translations()
-                    ->where('item_id', '=', $model->getKey())
-                    ->where('lang', '=', $translation["lang"]);
-                
-                if ($entry->exists()) {
-                    $entry->update($translation);
-                } else {
-                    $model->translations()->create($translation);
-                }
-            }
-        };
 
         return $model;
     }
