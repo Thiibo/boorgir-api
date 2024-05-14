@@ -133,7 +133,7 @@ Route::middleware('language')->group(function () {
                 "front.itemselection.action.item" => "Commander",
 
                 "backoffice.sidebar.nav.ingredients" => "Ingrédients",
-                "backoffice.sidebar.nav.burgers" => "Burger",
+                "backoffice.sidebar.nav.burgers" => "Burgers",
                 "backoffice.sidebar.profile.text" => "Connecté en tant que",
                 "backoffice.sidebar.profile.logout" => "Se déconnecter",
                 "backoffice.itemselection.title.unnamed" => "<item non nommé>",
