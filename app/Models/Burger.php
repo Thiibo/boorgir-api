@@ -15,4 +15,9 @@ class Burger extends Model
     {
         return $this->hasMany(BurgerLanguage::class, 'item_id');
     }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class);
+    }
 }

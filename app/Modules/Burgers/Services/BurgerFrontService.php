@@ -9,6 +9,11 @@ class BurgerFrontService extends TranslatedFrontService {
     protected $fields= ['burgers.id', 'name', 'description', 'price'];
     protected $searchField = 'name';
 
+    protected function getRelationFields()
+    {
+        return ['ingredients'];
+    }
+
     public function __construct(Burger $model)
     {
         parent::__construct($model);
