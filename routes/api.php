@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BurgerBackController;
+use App\Http\Controllers\BurgerFrontController;
 use App\Http\Controllers\IngredientBackController;
 use App\Http\Controllers\IngredientFrontController;
 use Illuminate\Support\Facades\Route;
@@ -169,6 +171,9 @@ Route::middleware('language')->group(function () {
         Route::get('ingredients', [IngredientFrontController::class, 'all']);
         Route::get('ingredients/{id}', [IngredientFrontController::class, 'find']);
 
+        Route::get('burgers', [BurgerFrontController::class, 'all']);
+        Route::get('burgers/{id}', [BurgerFrontController::class, 'find']);
+
         Route::group([
             'middleware' => ["auth.admin"],
             'prefix' => '/admin'
@@ -178,6 +183,12 @@ Route::middleware('language')->group(function () {
             Route::put('ingredients/{id}', [IngredientBackController::class, 'update']);
             Route::delete('ingredients/{id}', [IngredientBackController::class, 'delete']);
             Route::post('ingredients', [IngredientBackController::class, 'create']);
+
+            Route::get('burgers', [BurgerBackController::class, 'all']);
+            Route::get('burgers/{id}', [BurgerBackController::class, 'find']);
+            Route::put('burgers/{id}', [BurgerBackController::class, 'update']);
+            Route::delete('burgers/{id}', [BurgerBackController::class, 'delete']);
+            Route::post('burgers', [BurgerBackController::class, 'create']);
         });
     });
 });
