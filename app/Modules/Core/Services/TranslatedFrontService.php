@@ -9,7 +9,7 @@ abstract class TranslatedFrontService extends Service {
         $modelTable = $this->model->getTable();
         $modelLanguagesTable = $this->model->translations()->getRelated()->getTable();
 
-        return $this->model
+        return parent::getFullModel()
             ->join($modelLanguagesTable, "$modelLanguagesTable.item_id", '=', "$modelTable.id")
             ->where("$modelLanguagesTable.lang", '=', $language)
             ->select($this->fields);
