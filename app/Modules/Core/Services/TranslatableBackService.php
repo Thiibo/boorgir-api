@@ -14,6 +14,7 @@ abstract class TranslatableBackService extends Service {
     public function update($data, int $id, $ruleSet = "update")
     {
         $model = parent::update($data, $id, $ruleSet);
+        if ($this->hasErrors()) return;
         
         foreach ($data["translations"] as $translation) {
             $entry = $model->translations()

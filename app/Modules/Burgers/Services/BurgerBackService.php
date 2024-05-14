@@ -15,17 +15,28 @@ class BurgerBackService extends TranslatableBackService {
         return [
             "add" => [
                 'price' => 'required|numeric',
+                'ingredients' => 'array|exists:ingredients,id',
                 'translations.*.lang' => "required|distinct|in:$supported_locales",
                 'translations.*.name' => 'required|string',
                 'translations.*.description' => 'required|string',
             ],
             "update" => [
                 'price' => 'required|numeric',
+                'ingredients' => 'array|exists:ingredients,id',
                 'translations.*.lang' => "required|distinct|in:$supported_locales",
                 'translations.*.name' => 'required|string',
                 'translations.*.description' => 'required|string',
             ]
         ];
+    }
+
+    public function update($data, int $id, $ruleSet = "update")
+    {
+        $model = parent::update($data, $id, $ruleSet);
+        if ($this->hasErrors()) return;
+        
+        $model->ingredients()->sync($data["ingredients"]);
+        return $model;
     }
 
     protected function getRelationFields()
