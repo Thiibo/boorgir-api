@@ -55,7 +55,6 @@ abstract class Service {
         $model = $this->find($id);
         if ($this->hasErrors()) return;
 
-        $model = $model->first();
         $model->update($data);
 
         return $model;
