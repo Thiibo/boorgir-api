@@ -56,7 +56,8 @@ abstract class ImageService extends Service {
         $directoryPath = $this->getFileDirectoryPath();
         $filePath = "$directoryPath/$id";
         if (!file_exists($filePath)) {
-            return public_path('image-not-found.png');
+            $this->errors = new MessageBag(["file" => "The requested image does not exist."]);
+            return;
         }
 
         return $filePath;
