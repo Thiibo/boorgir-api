@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Ingredients\Services;
+namespace App\Modules\Burgers\Services;
 
 use App\Models\Burger;
 use App\Modules\Core\Services\ImageService;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Modules\Ingredients\Services\BurgerImageService;
+use App\Modules\Burgers\Services\BurgerImageService;
 
 class BurgerImageController extends ImageController
 {
