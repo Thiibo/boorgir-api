@@ -21,6 +21,16 @@ abstract class ImageController extends Controller
         return response()->json($model, Response::HTTP_CREATED);
     }
 
+    public function get($id)
+    {
+        $filePath = $this->service->get($id);
+        if ($this->service->hasErrors()) {
+            return $this->createErrorResponse();
+        }
+
+        return response()->file($filePath);
+    }
+
     protected function createErrorResponse(): JsonResponse
     {
         $errors = $this->service->getErrors();

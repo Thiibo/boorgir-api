@@ -48,6 +48,21 @@ abstract class ImageService extends Service {
         }
     }
 
+    public function get(int $id)
+    {
+        $this->validate(['id' => $id], 'id');
+        if ($this->hasErrors()) return;
+
+        $directoryPath = $this->getFileDirectoryPath();
+        $filePath = "$directoryPath/$id";
+        if (!file_exists($filePath)) {
+            $this->errors = new MessageBag(["file" => "The requested image does not exist."]);
+            return;
+        }
+
+        return $filePath;
+    }
+
     private function getFileDirectoryPath()
     {
         $modelTable = $this->model->getTable();

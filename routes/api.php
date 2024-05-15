@@ -187,9 +187,11 @@ Route::middleware('language')->group(function () {
 
         Route::get('ingredients', [IngredientFrontController::class, 'all']);
         Route::get('ingredients/{id}', [IngredientFrontController::class, 'find']);
+        Route::get('ingredients/{id}/thumbnail', [IngredientImageController::class, 'get']);
 
         Route::get('burgers', [BurgerFrontController::class, 'all']);
         Route::get('burgers/{id}', [BurgerFrontController::class, 'find']);
+        Route::get('burgers/{id}/thumbnail', [BurgerImageController::class, 'get']);
 
         Route::group([
             'middleware' => ["auth.admin"],
