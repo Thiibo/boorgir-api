@@ -30,7 +30,7 @@ Route::middleware('language')->group(function () {
                 "front.page.home.intro" => "I would love a…",
                 "front.page.home.cta" => "Let's order!",
                 "front.page.order" => "Order",
-                "front.page.order.amountColumn" => "Order amount",
+                "front.page.order.amountColumn" => "order amount",
                 "front.page.order.receipttitle" => "Your order",
                 "front.page.register" => "Register",
                 "front.page.register.submit" => "Make your account",
@@ -38,6 +38,10 @@ Route::middleware('language')->group(function () {
                 "front.page.login.submit" => "Log in",
                 "front.alt.atmosphericphoto" => "Atmospheric photo",
                 "front.itemselection.action.item" => "Order",
+                "front.itemselection.noingredients" => "(no ingredients)",
+                "front.itemselection.continue" => "Continue",
+                "front.itemselection.action.order" => "Order",
+                "front.itemselection.subtotal" => "Subtotal",
 
                 "backoffice.sidebar.nav.ingredients" => "Ingredients",
                 "backoffice.sidebar.nav.burgers" => "Burgers",
@@ -77,6 +81,7 @@ Route::middleware('language')->group(function () {
                 "general.form.email" => "Email address:",
                 "general.form.password" => "Password:",
                 "general.form.passwordconfirmation" => "Confirm your password:",
+                "general.action.closedialog" => "Close dialog",
 
             ],
             "nl" => [
@@ -84,7 +89,7 @@ Route::middleware('language')->group(function () {
                 "front.page.home.intro" => "Ik heb graag een...",
                 "front.page.home.cta" => "Bestellen maar!",
                 "front.page.order" => "Bestellen",
-                "front.page.order.amountColumn" => "Bestelbedrag",
+                "front.page.order.amountColumn" => "bestelbedrag",
                 "front.page.order.receipttitle" => "Uw bestelling",
                 "front.page.register" => "Registreren",
                 "front.page.register.submit" => "Maak je account aan",
@@ -92,6 +97,10 @@ Route::middleware('language')->group(function () {
                 "front.page.login.submit" => "Inloggen",
                 "front.alt.atmosphericphoto" => "Atmosferische foto",
                 "front.itemselection.action.item" => "Bestellen",
+                "front.itemselection.noingredients" => "(geen ingrediënten)",
+                "front.itemselection.continue" => "Doorgaan",
+                "front.itemselection.action.order" => "Bestellen",
+                "front.itemselection.subtotal" => "Subtotaal",
 
                 "backoffice.sidebar.nav.ingredients" => "Ingrediënten",
                 "backoffice.sidebar.nav.burgers" => "Burgers",
@@ -131,13 +140,14 @@ Route::middleware('language')->group(function () {
                 "general.form.email" => "E-mailadres:",
                 "general.form.password" => "Wachtwoord:",
                 "general.form.passwordconfirmation" => "Bevestig je wachtwoord:",
+                "general.action.closedialog" => "Dialoogvenster sluiten",
             ],
             "fr" => [
                 "front.page.home" => "Accueil",
                 "front.page.home.intro" => "J'aimerais une...",
                 "front.page.home.cta" => "Allons commander !",
                 "front.page.order" => "Commander",
-                "front.page.order.amountColumn" => "Montant de la commande",
+                "front.page.order.amountColumn" => "montant de la commande",
                 "front.page.order.receipttitle" => "Votre commande",
                 "front.page.register" => "S'inscrire",
                 "front.page.register.submit" => "Créer votre compte",
@@ -145,6 +155,10 @@ Route::middleware('language')->group(function () {
                 "front.page.login.submit" => "Se connecter",
                 "front.alt.atmosphericphoto" => "Photo atmosphérique",
                 "front.itemselection.action.item" => "Commander",
+                "front.itemselection.noingredients" => "(aucun ingrédient)",
+                "front.itemselection.continue" => "Continuer",
+                "front.itemselection.action.order" => "Commander",
+                "front.itemselection.subtotal" => "Sous-total",
 
                 "backoffice.sidebar.nav.ingredients" => "Ingrédients",
                 "backoffice.sidebar.nav.burgers" => "Burgers",
@@ -184,6 +198,8 @@ Route::middleware('language')->group(function () {
                 "general.form.email" => "Adresse email :",
                 "general.form.password" => "Mot de passe :",
                 "general.form.passwordconfirmation" => "Confirmez votre mot de passe :",
+                "general.action.closedialog" => "Fermer la boîte de dialogue",
+
             ]
         ];
     
