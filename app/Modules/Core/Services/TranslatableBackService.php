@@ -6,6 +6,7 @@ abstract class TranslatableBackService extends ApiService {
     public function create($data, $ruleSet = "add")
     {
         $model = parent::create($data, $ruleSet);
+        if ($this->hasErrors()) return;
         $model->translations()->createMany($data['translations']);
 
         return $model;
