@@ -3,11 +3,11 @@ namespace App\Modules\Users\Services;
 
 use Nette\Utils\Random;
 use App\Models\User;
-use App\Modules\Core\Services\Service;
+use App\Modules\Core\Services\ApiService;
 use Illuminate\Support\MessageBag;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class UserService extends Service {
+class UserService extends ApiService {
 
     protected $fields= ['id', 'name'];
     protected $searchField = 'name';

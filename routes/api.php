@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\BurgerBackController;
 use App\Http\Controllers\BurgerFrontController;
+use App\Http\Controllers\BurgerImageController;
 use App\Http\Controllers\IngredientBackController;
 use App\Http\Controllers\IngredientFrontController;
+use App\Http\Controllers\IngredientImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JwtAuthController;
 
@@ -197,12 +199,14 @@ Route::middleware('language')->group(function () {
             Route::get('ingredients/{id}', [IngredientBackController::class, 'find']);
             Route::put('ingredients/{id}', [IngredientBackController::class, 'update']);
             Route::delete('ingredients/{id}', [IngredientBackController::class, 'delete']);
+            Route::post('ingredients/{id}/thumbnail', [IngredientImageController::class, 'upload']);
             Route::post('ingredients', [IngredientBackController::class, 'create']);
 
             Route::get('burgers', [BurgerBackController::class, 'all']);
             Route::get('burgers/{id}', [BurgerBackController::class, 'find']);
             Route::put('burgers/{id}', [BurgerBackController::class, 'update']);
             Route::delete('burgers/{id}', [BurgerBackController::class, 'delete']);
+            Route::post('burgers/{id}/thumbnail', [BurgerImageController::class, 'upload']);
             Route::post('burgers', [BurgerBackController::class, 'create']);
         });
     });

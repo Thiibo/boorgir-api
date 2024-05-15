@@ -1,7 +1,7 @@
 <?php
 namespace App\Modules\Core\Services;
 
-abstract class TranslatedFrontService extends Service {
+abstract class TranslatedFrontService extends ApiService {
     public function getFullModel(string $query = '')
     {
         $language = app()->getLocale();

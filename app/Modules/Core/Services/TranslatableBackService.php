@@ -1,7 +1,7 @@
 <?php
 namespace App\Modules\Core\Services;
 
-abstract class TranslatableBackService extends Service {
+abstract class TranslatableBackService extends ApiService {
 
     public function create($data, $ruleSet = "add")
     {

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Modules\Core\Services\ApiService;
 use Illuminate\Http\Request;
-use App\Modules\Core\Services\Service;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 abstract class ApiServiceController extends Controller
 {
-    protected Service $service;
+    protected ApiService $service;
 
     public function find($id)
     {
