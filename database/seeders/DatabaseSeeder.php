@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
             [
                 UserSeeder::class,
                 IngredientSeeder::class,
-                IngredientLanguageSeeder::class
+                IngredientLanguageSeeder::class,
+                BurgerSeeder::class,
+                BurgerLanguageSeeder::class,
+                BurgerIngredientSeeder::class
             ]
         );
     }

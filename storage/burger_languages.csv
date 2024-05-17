@@ -1,0 +1,16 @@
+item_id;name;description;lang
+1;Classic Beef Burger;"Grilled beef patty, topped with melted cheddar cheese, lettuce, tomato, onion, and mayonnaise on a white bottom burger bun.";en
+1;Klassieke rundvlees hamburger;"Gegrild rundvlees, belegd met gesmolten cheddarkaas, sla, tomaat, ui en mayonaise op een wit hamburgerbroodje.";nl
+1;Burger classique au bœuf;"Galette de bœuf grillée, garnie de cheddar fondu, de laitue, de tomate, d'oignon et de mayonnaise sur un pain à hamburger blanc.";fr
+2;Veggie Burger;a;en
+2;Veggie Burger;a;nl
+2;Burger végétarien;a;fr
+3;Chicken Parmesan Burger;a;en
+3;Kip Parmezaanse Burger;a;nl
+3;Burger au poulet et au parmesan;a;fr
+4;Bacon Cheeseburger;a;en
+4;Bacon Cheeseburger;a;nl
+4;Bacon Cheeseburger;a;fr
+5;Mushroom Swiss Burger;a;en
+5;Champignon Zwitserse Burger;a;nl
+5;Burger champignon-suisse;a;fr
