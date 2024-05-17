@@ -36,6 +36,7 @@ Route::middleware('language')->group(function () {
                 "front.page.register.submit" => "Make your account",
                 "front.page.login" => "Login",
                 "front.page.login.submit" => "Log in",
+                "front.page.admin" => "Admin panel",
                 "front.alt.atmosphericphoto" => "Atmospheric photo",
                 "front.itemselection.action.item" => "Order",
                 "front.itemselection.noingredients" => "(no ingredients)",
@@ -43,10 +44,10 @@ Route::middleware('language')->group(function () {
                 "front.itemselection.action.order" => "Order",
                 "front.itemselection.subtotal" => "Subtotal",
 
+                "backoffice.sidebar.home" => "Return to home page",
                 "backoffice.sidebar.nav.ingredients" => "Ingredients",
                 "backoffice.sidebar.nav.burgers" => "Burgers",
                 "backoffice.sidebar.profile.text" => "Logged in as",
-                "backoffice.sidebar.profile.logout" => "Log out",
                 "backoffice.itemselection.title.unnamed" => "<unnamed item>",
                 "backoffice.itemselection.action.delete" => "Delete",
                 "backoffice.itemselection.action.cancel" => "Cancel",
@@ -65,6 +66,7 @@ Route::middleware('language')->group(function () {
                 "general.itemselection.controlbar.perPage" => "Per page:",
                 "general.itemselection.controlbar.filter" => "Filter",
                 "general.itemselection.image.unavailable" => "No image available",
+                "general.itemselection.noitems" => "No items available. Please try changing your filters.",
                 "general.itemselection.column.action" => "action",
                 "general.itemselection.column.thumbnail" => "thumbnail",
                 "general.itemselection.column.ingredients.id" => "ID",
@@ -82,7 +84,8 @@ Route::middleware('language')->group(function () {
                 "general.form.password" => "Password:",
                 "general.form.passwordconfirmation" => "Confirm your password:",
                 "general.action.closedialog" => "Close dialog",
-
+                "general.action.profile.logout" => "Log out",
+                
             ],
             "nl" => [
                 "front.page.home" => "Startpagina",
@@ -95,6 +98,7 @@ Route::middleware('language')->group(function () {
                 "front.page.register.submit" => "Maak je account aan",
                 "front.page.login" => "Inloggen",
                 "front.page.login.submit" => "Inloggen",
+                "front.page.admin" => "Beheerderspaneel",
                 "front.alt.atmosphericphoto" => "Atmosferische foto",
                 "front.itemselection.action.item" => "Bestellen",
                 "front.itemselection.noingredients" => "(geen ingrediënten)",
@@ -102,10 +106,10 @@ Route::middleware('language')->group(function () {
                 "front.itemselection.action.order" => "Bestellen",
                 "front.itemselection.subtotal" => "Subtotaal",
 
+                "backoffice.sidebar.home" => "Terug naar de startpagina",
                 "backoffice.sidebar.nav.ingredients" => "Ingrediënten",
                 "backoffice.sidebar.nav.burgers" => "Burgers",
                 "backoffice.sidebar.profile.text" => "Ingelogd als",
-                "backoffice.sidebar.profile.logout" => "Uitloggen",
                 "backoffice.itemselection.title.unnamed" => "<onbenoemd item>",
                 "backoffice.itemselection.action.delete" => "Verwijderen",
                 "backoffice.itemselection.action.cancel" => "Annuleren",
@@ -124,6 +128,7 @@ Route::middleware('language')->group(function () {
                 "general.itemselection.controlbar.perPage" => "Per pagina:",
                 "general.itemselection.controlbar.filter" => "Filteren",
                 "general.itemselection.image.unavailable" => "Geen afbeelding beschikbaar",
+                "general.itemselection.noitems" => "Geen items beschikbaar. Probeer je filters te veranderen.",
                 "general.itemselection.column.action" => "actie",
                 "general.itemselection.column.thumbnail" => "afbeelding",
                 "general.itemselection.column.ingredients.id" => "ID",
@@ -141,6 +146,8 @@ Route::middleware('language')->group(function () {
                 "general.form.password" => "Wachtwoord:",
                 "general.form.passwordconfirmation" => "Bevestig je wachtwoord:",
                 "general.action.closedialog" => "Dialoogvenster sluiten",
+                "general.action.profile.logout" => "Uitloggen",
+
             ],
             "fr" => [
                 "front.page.home" => "Accueil",
@@ -153,6 +160,7 @@ Route::middleware('language')->group(function () {
                 "front.page.register.submit" => "Créer votre compte",
                 "front.page.login" => "Se connecter",
                 "front.page.login.submit" => "Se connecter",
+                "front.page.admin" => "Panneau d'administration",
                 "front.alt.atmosphericphoto" => "Photo atmosphérique",
                 "front.itemselection.action.item" => "Commander",
                 "front.itemselection.noingredients" => "(aucun ingrédient)",
@@ -160,10 +168,10 @@ Route::middleware('language')->group(function () {
                 "front.itemselection.action.order" => "Commander",
                 "front.itemselection.subtotal" => "Sous-total",
 
+                "backoffice.sidebar.home" => "Retour à la page d'accueil",
                 "backoffice.sidebar.nav.ingredients" => "Ingrédients",
                 "backoffice.sidebar.nav.burgers" => "Burgers",
                 "backoffice.sidebar.profile.text" => "Connecté en tant que",
-                "backoffice.sidebar.profile.logout" => "Se déconnecter",
                 "backoffice.itemselection.title.unnamed" => "<item non nommé>",
                 "backoffice.itemselection.action.delete" => "Supprimer",
                 "backoffice.itemselection.action.cancel" => "Annuler",
@@ -182,6 +190,7 @@ Route::middleware('language')->group(function () {
                 "general.itemselection.controlbar.perPage" => "Par page :",
                 "general.itemselection.controlbar.filter" => "Filtrer",
                 "general.itemselection.image.unavailable" => "Aucune image disponible",
+                "general.itemselection.noitems" => "Aucun article disponible. Essayez de modifier vos filtres.",
                 "general.itemselection.column.action" => "action",
                 "general.itemselection.column.thumbnail" => "image",
                 "general.itemselection.column.ingredients.id" => "ID",
@@ -199,6 +208,7 @@ Route::middleware('language')->group(function () {
                 "general.form.password" => "Mot de passe :",
                 "general.form.passwordconfirmation" => "Confirmez votre mot de passe :",
                 "general.action.closedialog" => "Fermer la boîte de dialogue",
+                "general.action.profile.logout" => "Se déconnecter",
 
             ]
         ];
