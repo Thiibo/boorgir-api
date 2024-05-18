@@ -53,7 +53,7 @@ class BurgerBackService extends TranslatableBackService {
 
     public function getFullModel(string $searchQuery = '')
     {
-        return parent::getFullModel()->with(['ingredients' => function($query) {
+        return parent::getFullModel($searchQuery)->with(['ingredients' => function($query) {
             $provider = new BackTranslationsProvider();
             $provider->addTranslations($query);
         }]);

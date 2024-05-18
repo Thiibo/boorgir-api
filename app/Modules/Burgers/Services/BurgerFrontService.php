@@ -12,7 +12,7 @@ class BurgerFrontService extends TranslatedFrontService {
 
     public function getFullModel(string $searchQuery = '')
     {
-        return parent::getFullModel()->with(['ingredients' => function($query) {
+        return parent::getFullModel($searchQuery)->with(['ingredients' => function($query) {
             $provider = new FrontTranslationsProvider();
             $provider->addTranslations($query)->select(['ingredients.id', 'name', 'description', 'vegetarian', 'price']);
         }]);
