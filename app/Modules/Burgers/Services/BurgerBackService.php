@@ -15,14 +15,14 @@ class BurgerBackService extends TranslatableBackService {
         return [
             "add" => [
                 'price' => 'required|numeric|gt:0',
-                'ingredients' => 'array|exists:ingredients,id',
+                'ingredients.*.id' => 'array|exists:ingredients,id',
                 'translations.*.lang' => "required|distinct|in:$supported_locales",
                 'translations.*.name' => 'required|string',
                 'translations.*.description' => 'required|string',
             ],
             "update" => [
                 'price' => 'required|numeric|gt:0',
-                'ingredients' => 'array|exists:ingredients,id',
+                'ingredients.*.id' => 'array|exists:ingredients,id',
                 'translations.*.lang' => "required|distinct|in:$supported_locales",
                 'translations.*.name' => 'required|string',
                 'translations.*.description' => 'required|string',
@@ -30,12 +30,23 @@ class BurgerBackService extends TranslatableBackService {
         ];
     }
 
+    public function create($data, $ruleSet = "add")
+    {
+        $model = parent::create($data, $ruleSet);
+        if ($this->hasErrors()) return;
+        
+        $ingredientIds = array_column($data['ingredients'], 'id');
+        $model->ingredients()->sync($ingredientIds);
+        return $model;
+    }
+
     public function update($data, int $id, $ruleSet = "update")
     {
         $model = parent::update($data, $id, $ruleSet);
         if ($this->hasErrors()) return;
         
-        $model->ingredients()->sync($data["ingredients"]);
+        $ingredientIds = array_column($data['ingredients'], 'id');
+        $model->ingredients()->sync($ingredientIds);
         return $model;
     }
 
