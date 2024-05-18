@@ -7,11 +7,6 @@ abstract class ApiService extends Service {
     protected $fields;
     protected $searchField;
 
-    protected function getRelationFields()
-    {
-        return [];
-    }
-
     public function find($id)
     {
         $model = $this->getFullModel()->find($id);
@@ -56,8 +51,6 @@ abstract class ApiService extends Service {
 
     public function getFullModel()
     {
-        return $this->model
-            ->select($this->fields)
-            ->with($this->getRelationFields());
+        return $this->model->select($this->fields);
     }
 }

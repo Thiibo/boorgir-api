@@ -1,6 +1,8 @@
 <?php
 namespace App\Modules\Core\Services;
 
+use App\Modules\Core\TranslationProviders\BackTranslationsProvider;
+
 abstract class TranslatableBackService extends ApiService {
 
     public function create($data, $ruleSet = "add")
@@ -34,8 +36,9 @@ abstract class TranslatableBackService extends ApiService {
 
     public function getFullModel(string $searchQuery = '')
     {
-        return parent::getFullModel()
-            ->with('translations')
+        $model = parent::getFullModel();
+        $provider = new BackTranslationsProvider();
+        return $provider->addTranslations($model)
             ->whereHas('translations', function ($query) use ($searchQuery) {
                 $query->where($this->searchField, 'LIKE', "%$searchQuery%");
             });

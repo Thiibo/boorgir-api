@@ -14,6 +14,12 @@ class Ingredient extends Model
         'vegetarian' => 'boolean'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'pivot'
+    ];
+
     public function translations()
     {
         return $this->hasMany(IngredientLanguage::class, 'item_id');

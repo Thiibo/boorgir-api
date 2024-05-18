@@ -3,6 +3,7 @@ namespace App\Modules\Burgers\Services;
 
 use App\Models\Burger;
 use App\Modules\Core\Services\TranslatableBackService;
+use App\Modules\Core\TranslationProviders\BackTranslationsProvider;
 
 class BurgerBackService extends TranslatableBackService {
 
@@ -50,9 +51,12 @@ class BurgerBackService extends TranslatableBackService {
         return $model;
     }
 
-    protected function getRelationFields()
+    public function getFullModel(string $searchQuery = '')
     {
-        return ['ingredients'];
+        return parent::getFullModel()->with(['ingredients' => function($query) {
+            $provider = new BackTranslationsProvider();
+            $provider->addTranslations($query);
+        }]);
     }
 
     public function __construct(Burger $model)
