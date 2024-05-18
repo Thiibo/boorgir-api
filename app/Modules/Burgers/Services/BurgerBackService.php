@@ -15,14 +15,14 @@ class BurgerBackService extends TranslatableBackService {
         return [
             "add" => [
                 'price' => 'required|numeric|gt:0',
-                'ingredients.*.id' => 'array|exists:ingredients,id',
+                'ingredients.*.id' => 'numeric|exists:ingredients,id',
                 'translations.*.lang' => "required|distinct|in:$supported_locales",
                 'translations.*.name' => 'required|string',
                 'translations.*.description' => 'required|string',
             ],
             "update" => [
                 'price' => 'required|numeric|gt:0',
-                'ingredients.*.id' => 'array|exists:ingredients,id',
+                'ingredients.*.id' => 'numeric|exists:ingredients,id',
                 'translations.*.lang' => "required|distinct|in:$supported_locales",
                 'translations.*.name' => 'required|string',
                 'translations.*.description' => 'required|string',
