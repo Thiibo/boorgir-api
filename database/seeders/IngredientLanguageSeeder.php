@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\IngredientLanguage;
 use App\Modules\Helpers\CsvReader;
+use App\Modules\Helpers\ZipExtractor;
 use Illuminate\Database\Seeder;
 
 class IngredientLanguageSeeder extends Seeder
@@ -19,6 +20,8 @@ class IngredientLanguageSeeder extends Seeder
         foreach ($data as $row) {
             $this->createModel($row);
         }
+
+        $this->createImages();
     }
 
     private function createModel($row): void
@@ -31,5 +34,11 @@ class IngredientLanguageSeeder extends Seeder
         $model->lang = $row['lang'];
 
         $model->save();
+    }
+
+    private function createImages(): void
+    {
+        $zipExtractor = new ZipExtractor();
+        $zipExtractor->unzip('ingredients.zip', 'app/images/ingredients');
     }
 }
