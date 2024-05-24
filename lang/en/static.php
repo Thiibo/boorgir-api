@@ -1,6 +1,17 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Static Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used by the front end
+    | site to display static (non-database related) translations.
+    |
+    */
+
     "front.page.home" => "Home",
     "front.page.home.intro" => "I would love a…",
     "front.page.home.cta" => "Let's order!",
@@ -69,4 +80,5 @@ return [
     "general.error.api" => "An error occured when connecting to the server.",
     "general.error.notfound" => "Error: Page not found.",
     "general.error.unauthorized" => "Error: You are not authorized to view this page."
+
 ];
