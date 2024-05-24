@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the front end
-    | site to display static (non-database related) translations.
+    | site to display static (non-data-driven) translations.
     |
     */
 
@@ -77,8 +77,10 @@ return [
     "general.form.passwordconfirmation" => "Bevestig je wachtwoord:",
     "general.action.closedialog" => "Dialoogvenster sluiten",
     "general.action.profile.logout" => "Uitloggen",
+    "general.notification.dismiss" => "Melding verwerpen",
     "general.error.api" => "Er is een fout opgetreden bij het verbinden met de server.",
     "general.error.notfound" => "Fout: Pagina niet gevonden.",
+    "general.error.notloggedin" => "Fout: Log in om verder te gaan.",
     "general.error.unauthorized" => "Fout: U bent niet bevoegd om deze pagina te bekijken."
 
 ];

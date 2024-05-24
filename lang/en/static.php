@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the front end
-    | site to display static (non-database related) translations.
+    | site to display static (non-data-driven) translations.
     |
     */
 
@@ -77,8 +77,10 @@ return [
     "general.form.passwordconfirmation" => "Confirm your password:",
     "general.action.closedialog" => "Close dialog",
     "general.action.profile.logout" => "Log out",
+    "general.notification.dismiss" => "Dismiss notification",
     "general.error.api" => "An error occured when connecting to the server.",
     "general.error.notfound" => "Error: Page not found.",
+    "general.error.notloggedin" => "Error: Please log in to continue.",
     "general.error.unauthorized" => "Error: You are not authorized to view this page."
 
 ];

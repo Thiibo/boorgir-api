@@ -21,7 +21,7 @@ use App\Http\Controllers\JwtAuthController;
 */
 
 Route::middleware('language')->group(function () {
-    Route::get('/translations', fn() => trans('static'));
+    Route::get('translations', fn() => trans('static'));
     Route::post('register', [JwtAuthController::class, 'register']);
     Route::post('login', [JwtAuthController::class, 'login']);
     
