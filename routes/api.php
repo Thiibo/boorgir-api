@@ -34,6 +34,7 @@ Route::middleware('language')->group(function () {
                 "front.page.order.receipttitle" => "Your order",
                 "front.page.register" => "Register",
                 "front.page.register.submit" => "Make your account",
+                "front.page.register.success" => "Registering successful. Please log in.",
                 "front.page.login" => "Login",
                 "front.page.login.submit" => "Log in",
                 "front.page.admin" => "Admin panel",
@@ -90,6 +91,9 @@ Route::middleware('language')->group(function () {
                 "general.form.passwordconfirmation" => "Confirm your password:",
                 "general.action.closedialog" => "Close dialog",
                 "general.action.profile.logout" => "Log out",
+                "general.error.api" => "An error occured when connecting to the server.",
+                "general.error.notfound" => "Error: Page not found.",
+                "general.error.unauthorized" => "Error: You are not authorized to view this page."
                 
             ],
             "nl" => [
@@ -101,6 +105,7 @@ Route::middleware('language')->group(function () {
                 "front.page.order.receipttitle" => "Uw bestelling",
                 "front.page.register" => "Registreren",
                 "front.page.register.submit" => "Maak je account aan",
+                "front.page.register.success" => "Registreren is gelukt. Log alstublieft in.",
                 "front.page.login" => "Inloggen",
                 "front.page.login.submit" => "Inloggen",
                 "front.page.admin" => "Beheerderspaneel",
@@ -157,6 +162,9 @@ Route::middleware('language')->group(function () {
                 "general.form.passwordconfirmation" => "Bevestig je wachtwoord:",
                 "general.action.closedialog" => "Dialoogvenster sluiten",
                 "general.action.profile.logout" => "Uitloggen",
+                "general.error.api" => "Er is een fout opgetreden bij het verbinden met de server.",
+                "general.error.notfound" => "Fout: Pagina niet gevonden.",
+                "general.error.unauthorized" => "Fout: U bent niet bevoegd om deze pagina te bekijken."
 
             ],
             "fr" => [
@@ -168,6 +176,7 @@ Route::middleware('language')->group(function () {
                 "front.page.order.receipttitle" => "Votre commande",
                 "front.page.register" => "S'inscrire",
                 "front.page.register.submit" => "Créer votre compte",
+                "front.page.register.success" => "Enregistrement réussi. Veuillez vous connecter.",
                 "front.page.login" => "Se connecter",
                 "front.page.login.submit" => "Se connecter",
                 "front.page.admin" => "Panneau d'administration",
@@ -224,6 +233,9 @@ Route::middleware('language')->group(function () {
                 "general.form.passwordconfirmation" => "Confirmez votre mot de passe :",
                 "general.action.closedialog" => "Fermer la boîte de dialogue",
                 "general.action.profile.logout" => "Se déconnecter",
+                "general.error.api" => "Une erreur s'est produite lors de la connexion au serveur.",
+                "general.error.notfound" => "Erreur : La page n'a pas été trouvée.",
+                "general.error.unauthorized" => "Erreur : Vous n'êtes pas autorisé à consulter cette page."
 
             ]
         ];
