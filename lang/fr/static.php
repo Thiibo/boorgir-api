@@ -13,7 +13,6 @@ return [
     */
 
     "front.page.home" => "Accueil",
-    "front.page.home.intro" => "J'aimerais une...",
     "front.page.home.cta" => "Allons commander !",
     "front.page.order" => "Commander",
     "front.page.order.amountColumn" => "montant de la commande",
@@ -55,7 +54,6 @@ return [
     "general.itemselection.controlbar.previousPage" => "Page précédente",
     "general.itemselection.controlbar.nextPage" => "Page suivante",
     "general.itemselection.controlbar.perPage" => "Par page :",
-    "general.itemselection.controlbar.filter" => "Filtrer",
     "general.itemselection.image.unavailable" => "Aucune image disponible",
     "general.itemselection.noitems" => "Aucun article disponible. Essayez de modifier vos filtres.",
     "general.itemselection.noingredients" => "(aucun ingrédient)",

@@ -13,7 +13,6 @@ return [
     */
 
     "front.page.home" => "Startpagina",
-    "front.page.home.intro" => "Ik heb graag een...",
     "front.page.home.cta" => "Bestellen maar!",
     "front.page.order" => "Bestellen",
     "front.page.order.amountColumn" => "bestelbedrag",
@@ -55,7 +54,6 @@ return [
     "general.itemselection.controlbar.previousPage" => "Vorige pagina",
     "general.itemselection.controlbar.nextPage" => "Volgende pagina",
     "general.itemselection.controlbar.perPage" => "Per pagina:",
-    "general.itemselection.controlbar.filter" => "Filteren",
     "general.itemselection.image.unavailable" => "Geen afbeelding beschikbaar",
     "general.itemselection.noitems" => "Geen items beschikbaar. Probeer je filters te veranderen.",
     "general.itemselection.noingredients" => "(geen ingrediënten)",

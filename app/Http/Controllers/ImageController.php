@@ -13,12 +13,12 @@ abstract class ImageController extends Controller
 
     public function upload(Request $request, $id): JsonResponse
     {
-        $model = $this->service->upload($id, $request->all());
+        $this->service->upload($id, $request->all());
         if ($this->service->hasErrors()) {
             return $this->createErrorResponse();
         }
 
-        return response()->json($model, Response::HTTP_CREATED);
+        return response()->noContent(Response::HTTP_CREATED);
     }
 
     public function get($id)

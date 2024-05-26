@@ -13,7 +13,6 @@ return [
     */
 
     "front.page.home" => "Home",
-    "front.page.home.intro" => "I would love a…",
     "front.page.home.cta" => "Let's order!",
     "front.page.order" => "Order",
     "front.page.order.amountColumn" => "order amount",
@@ -55,7 +54,6 @@ return [
     "general.itemselection.controlbar.previousPage" => "Previous page",
     "general.itemselection.controlbar.nextPage" => "Next page",
     "general.itemselection.controlbar.perPage" => "Per page:",
-    "general.itemselection.controlbar.filter" => "Filter",
     "general.itemselection.image.unavailable" => "No image available",
     "general.itemselection.noitems" => "No items available. Please try changing your filters.",
     "general.itemselection.noingredients" => "(no ingredients)",
